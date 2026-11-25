@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Feature caches, checkpoints and run outputs (manifests and sample images in data/ are tracked)
+cache/
+runs/
+outputs/
+checkpoints/
+data/rendered/
+*.pt
+*.safetensors
+*.npy
+*.npz
+wandb/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

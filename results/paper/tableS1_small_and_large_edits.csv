@@ -1,0 +1,12 @@
+statistic,small_edits_s_lt_2,large_edits_s_gt_7
+pairs,1945,1085
+median_DH_over_DL,2.70,1.07
+L1x_accuracy,58.01,74.32
+L4x_accuracy,61.80,78.43
+U1x_accuracy,60.41,78.16
+H1x_accuracy,76.26,79.05
+H4x_accuracy,79.81,83.99
+H1x_minus_L4x,14.46,0.61
+H1x_minus_U1x,15.85,0.89
+H1x_minus_L1x,18.25,4.73
+H4x_minus_L4x,18.01,5.56

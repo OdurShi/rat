@@ -1,0 +1,43 @@
+# Laptop-scale configuration: the complete RAT pipeline with a 256M-parameter backbone on one
+# Apple-silicon or consumer GPU.  The pools are family-balanced prefixes of the shipped
+# manifests at one fiftieth of the paper's student pool; docs/implementation_notes.md lists
+# every difference from the paper's protocol.
+base: ../base.yaml
+
+backbone:
+  family: smolvlm
+  model_id: HuggingFaceTB/SmolVLM-256M-Instruct
+  dtype: float32
+  vision_dtype: float16
+  image_batch: 16
+
+data:
+  reader_fit: 400
+  tune: 200
+  dev: 100
+  train: 1000
+  test: 1800
+  prelim_train: 300
+  prelim_test: 900
+
+reader:
+  batch_pairs: 32
+  micro_pairs: 32
+
+student:
+  # Best of 2e-5, 1e-4, 2e-4 and 5e-4 on the development pool with uniformly selected
+  # high-resolution pairs (stage lr-pilot of scripts/run_study.py: 34, 52, 49 and 51% paired
+  # accuracy).  Eight pairs per update give a pass a useful number of updates at this scale.
+  learning_rate: 1.0e-4
+  batch_pairs: 8
+  pairs_per_forward: 8
+
+evaluation:
+  # Longer than any reference answer, so truncation cannot change exact-match results.
+  max_new_tokens: 24
+  batch_examples: 32
+
+budget:
+  reference_hours: null
+  accounting: modelled
+  devices: 1

@@ -1,0 +1,24 @@
+# Frozen-side study with the paper's primary backbone on one Apple-silicon or consumer GPU:
+# visual contrast, reader fitting and routing statistics (scripts/reader_study.py).  No
+# student is trained.  The pools are family-balanced prefixes of the shipped manifests.
+base: ../backbones/qwen2.5-vl-3b.yaml
+
+backbone:
+  dtype: float16
+  image_batch: 2
+
+data:
+  reader_fit: 800
+  tune: 300
+
+cache_dir: cache/qwen3b
+
+reader:
+  # 16 pairs per update keep the number of reader updates (500) in the range of the paper's
+  # 780 although the fitting pool is 12.5 times smaller.
+  batch_pairs: 16
+  micro_pairs: 16
+
+evaluation:
+  max_new_tokens: 24
+  batch_examples: 4

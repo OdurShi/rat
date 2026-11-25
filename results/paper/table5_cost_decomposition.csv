@@ -1,0 +1,4 @@
+backbone,preparation_mean,preparation_sd,routing_mean,routing_sd,training_mean,training_sd,total_mean,total_sd
+Qwen2.5-VL-3B,27.1,0.1,24.9,0.3,53.4,0.1,105.4,0.3
+Qwen2.5-VL-7B,46.3,0.2,38.1,0.3,90.7,0.2,175.1,0.3
+LLaVA-1.5-7B,31.4,0.2,18.5,0.4,77.5,0.3,127.4,0.3

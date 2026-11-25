@@ -1,0 +1,141 @@
+{
+  "backbone": "HuggingFaceTB/SmolVLM-256M-Instruct",
+  "modes": [
+    "L",
+    "H"
+  ],
+  "reader_fit_pairs": 400,
+  "heldout_pool": "tune",
+  "heldout_pairs": 200,
+  "seed": 17,
+  "reader_fit_tokens_per_image": {
+    "L": 64.0,
+    "H": 320.0
+  },
+  "reader_fit_encode_seconds_per_image": {
+    "L": 0.03937083067779895,
+    "H": 0.19514359051390784
+  },
+  "tune_tokens_per_image": {
+    "L": 64.0,
+    "H": 320.0
+  },
+  "tune_encode_seconds_per_image": {
+    "L": 0.04644083823513938,
+    "H": 0.2333787555215531
+  },
+  "contrast": {
+    "small": {
+      "pairs": 13,
+      "median_ratio_H_over_L": 3.376480995801701
+    },
+    "large": {
+      "pairs": 107,
+      "median_ratio_H_over_L": 0.7265387020884517
+    },
+    "middle": {
+      "pairs": 80,
+      "median_ratio_H_over_L": 0.7138325972381152
+    },
+    "all": {
+      "pairs": 200,
+      "median_ratio_H_over_L": 0.7724810552773622
+    },
+    "lower_third": {
+      "pairs": 67,
+      "median_ratio_H_over_L": 1.1690050961258533
+    },
+    "upper_third": {
+      "pairs": 67,
+      "median_ratio_H_over_L": 0.7917570454605648
+    }
+  },
+  "edit_scale_quantiles": {
+    "0.05": 1.827337195731084,
+    "0.25": 4.049556789020913,
+    "0.5": 7.342746399222194,
+    "0.75": 37.51968015476092,
+    "0.95": 106.48178673474435
+  },
+  "reader": {
+    "config": {
+      "epochs": 10,
+      "batch_pairs": 32,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "max_grad_norm": 1.0,
+      "init_gain": 0.01,
+      "micro_pairs": 32,
+      "standardize": false
+    },
+    "fit_seconds": 11.186372749973089,
+    "steps": 130,
+    "first_loss": 0.6931909918785095,
+    "final_loss": 0.7463518917560578,
+    "fit": {
+      "L": {
+        "branch_accuracy": 0.5212500095367432,
+        "pair_accuracy": 0.04500000178813934,
+        "median_min_margin": -0.07605811953544617
+      },
+      "H": {
+        "branch_accuracy": 0.5224999785423279,
+        "pair_accuracy": 0.04749999940395355,
+        "median_min_margin": -0.08036255836486816
+      }
+    },
+    "heldout": {
+      "L": {
+        "branch_accuracy": 0.4950000047683716,
+        "pair_accuracy": 0.0,
+        "median_min_margin": -0.08961260318756104
+      },
+      "H": {
+        "branch_accuracy": 0.5074999928474426,
+        "pair_accuracy": 0.014999999664723873,
+        "median_min_margin": -0.09448790550231934
+      }
+    }
+  },
+  "routing": [
+    {
+      "threshold": 0.6931471805599453,
+      "exp_threshold": 2.0,
+      "retained_percent": 0.0,
+      "top_mode_percent": 0.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.0,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 1.3862943611198906,
+      "exp_threshold": 4.0,
+      "retained_percent": 0.0,
+      "top_mode_percent": 0.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.0,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 2.1972245773362196,
+      "exp_threshold": 9.000000000000002,
+      "retained_percent": 0.0,
+      "top_mode_percent": 0.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.0,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    }
+  ]
+}

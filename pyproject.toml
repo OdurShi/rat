@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rat-vlm"
+version = "0.1.0"
+description = "RAT: training vision-language models with margin-based resolution selection (official implementation)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "The RAT authors" }]
+keywords = [
+    "vision-language models",
+    "training resolution",
+    "data selection",
+    "LoRA",
+    "chart question answering",
+    "document question answering",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pillow>=10.1",
+    "pyyaml>=6.0",
+    "torch>=2.4",
+]
+
+[project.optional-dependencies]
+hf = ["transformers>=5.20", "peft>=0.21"]
+benchmarks = ["datasets>=3.0"]
+plots = ["matplotlib>=3.7"]
+dev = ["pytest>=7.4", "ruff>=0.4"]
+
+[project.scripts]
+rat = "rat.cli:main"
+
+[project.urls]
+Repository = "https://github.com/OdurShi/rat"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rat"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+    # NumPy built against Apple Accelerate raises spurious floating-point warnings in matmul.
+    "ignore:.*encountered in matmul:RuntimeWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests", "scripts", "examples"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "NPY"]
+ignore = ["E741"]
+
+[tool.ruff.lint.per-file-ignores]
+# Report and driver scripts keep long table rows and immediately-called closures readable.
+"scripts/*" = ["E501", "B023", "B905"]
+"src/rat/experiments.py" = ["E501"]
+"src/rat/demo.py" = ["E501"]
+"src/rat/reported.py" = ["E501"]
+"tests/*" = ["E501"]
+"examples/*" = ["E501"]

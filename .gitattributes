@@ -1,0 +1,4 @@
+# Manifests are reproducible gzip files; images and fonts are binary.
+*.gz binary
+*.png binary
+*.ttf binary

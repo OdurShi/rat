@@ -1,0 +1,9 @@
+base: ../base.yaml
+backbone:
+  family: qwen2.5-vl
+  model_id: Qwen/Qwen2.5-VL-3B-Instruct
+  low_tokens: 256
+  high_tokens: 1024
+  dtype: bfloat16
+budget:
+  reference_hours: 106

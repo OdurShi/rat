@@ -1,0 +1,12 @@
+{
+  "model": {
+    "extract_fixed": 0.0,
+    "extract_per_token": 0.0011657080456438451,
+    "train_fixed": 0.0,
+    "train_per_token": 0.0008234550592821266,
+    "update_fixed": 0.0,
+    "generate_fixed": 0.0,
+    "generate_per_token": 0.00032704606837674264
+  },
+  "pilot_seconds": 47.717458416940644
+}

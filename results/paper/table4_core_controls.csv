@@ -1,0 +1,9 @@
+control,key,pairs_k_mean,pairs_k_sd,h_percent_mean,h_percent_sd,pair_mean,pair_sd,collapse_mean,collapse_sd,heldout_mean,heldout_sd,worst_mean,worst_sd,gpu_hours_mean,gpu_hours_sd,vtok_millions_mean,vtok_millions_sd
+RAT (complete exposure),rat,33.10,0.10,59.8,0.6,82.61,0.63,5.51,0.08,79.35,0.54,76.46,0.47,105.4,0.3,31.99,0.24
+"Filtering-only: S_R, all H",filter_only,33.10,0.10,100,,81.08,0.55,6.05,0.19,78.10,0.56,74.92,0.72,125.7,0.5,45.48,0.19
+Allocation-only: full pool,alloc_only,50.0,,72.0,0.4,79.43,0.55,6.70,0.26,75.81,0.54,72.96,0.58,142.3,0.6,54.42,0.25
+Random allocation: S_R,random_alloc,33.10,0.10,59.8,0.6,80.88,0.42,6.12,0.23,77.06,0.62,73.92,0.47,105.6,0.4,31.99,0.24
+Mean branch margin,mean_margin,36.62,0.24,55.2,0.7,80.15,0.45,6.42,0.19,76.35,0.43,73.17,0.58,105.2,0.3,34.25,0.28
+Initial-student candidate margin,student_margin,29.47,0.31,66.5,0.9,77.75,0.69,8.55,0.45,72.99,0.62,69.38,0.70,104.8,0.4,31.15,0.23
+"Equal-count random, all H",equal_random,33.10,0.10,100,,78.66,0.48,6.82,0.23,74.31,0.52,70.83,0.59,72.4,0.3,45.35,0.19
+"Equal-count answer loss, all H",equal_loss,33.10,0.10,100,,78.05,0.56,7.10,0.23,73.97,0.41,70.75,0.54,109.6,0.7,45.60,0.17

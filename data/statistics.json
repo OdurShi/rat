@@ -1,0 +1,360 @@
+{
+  "reader_fit": {
+    "pairs": 10000,
+    "expected_pairs": 10000,
+    "families": {
+      "chart": 3334,
+      "table": 3333,
+      "card": 3333
+    },
+    "renderings": {
+      "familiar": 10000
+    },
+    "tasks": {
+      "card/field": 2316,
+      "card/total": 1017,
+      "chart/argmax": 859,
+      "chart/argmin": 476,
+      "chart/count": 503,
+      "chart/value": 1496,
+      "table/argmax": 855,
+      "table/cell": 1671,
+      "table/total": 807
+    },
+    "fine_edit_share": 0.6006,
+    "qwen_tokens_per_image": {
+      "L": 241.2267,
+      "H": 848.2669
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 4.824534,
+      "H": 16.965338
+    },
+    "llava_full_pool_tokens_millions": 11.52,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.0125,
+    "edit_scale_L_px": {
+      "share_below_2": 0.0674,
+      "share_above_7": 0.5102,
+      "octiles": [
+        2.5576793758702365,
+        3.7261639148943995,
+        5.106277908033803,
+        7.175111302150075,
+        11.101351269102334,
+        40.18177125108984,
+        73.08629700389827
+      ]
+    }
+  },
+  "tune": {
+    "pairs": 5000,
+    "expected_pairs": 5000,
+    "families": {
+      "chart": 1667,
+      "table": 1667,
+      "card": 1666
+    },
+    "renderings": {
+      "familiar": 5000
+    },
+    "tasks": {
+      "card/field": 1188,
+      "card/total": 478,
+      "chart/argmax": 406,
+      "chart/argmin": 255,
+      "chart/count": 248,
+      "chart/value": 758,
+      "table/argmax": 380,
+      "table/cell": 882,
+      "table/total": 405
+    },
+    "fine_edit_share": 0.5844,
+    "qwen_tokens_per_image": {
+      "L": 241.2058,
+      "H": 846.6662
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 2.412058,
+      "H": 8.466662
+    },
+    "llava_full_pool_tokens_millions": 5.76,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.018,
+    "edit_scale_L_px": {
+      "share_below_2": 0.0682,
+      "share_above_7": 0.501,
+      "octiles": [
+        2.5554374670973443,
+        3.6480168252982894,
+        5.048371077744229,
+        7.019411837462567,
+        11.109070856817471,
+        37.2206622929276,
+        73.30249896839148
+      ]
+    }
+  },
+  "dev": {
+    "pairs": 2000,
+    "expected_pairs": 2000,
+    "families": {
+      "chart": 667,
+      "table": 667,
+      "card": 666
+    },
+    "renderings": {
+      "familiar": 2000
+    },
+    "tasks": {
+      "card/field": 481,
+      "card/total": 185,
+      "chart/argmax": 173,
+      "chart/argmin": 104,
+      "chart/count": 92,
+      "chart/value": 298,
+      "table/argmax": 181,
+      "table/cell": 315,
+      "table/total": 171
+    },
+    "fine_edit_share": 0.6105,
+    "qwen_tokens_per_image": {
+      "L": 240.9935,
+      "H": 845.4355
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 0.963974,
+      "H": 3.381742
+    },
+    "llava_full_pool_tokens_millions": 2.304,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.014,
+    "edit_scale_L_px": {
+      "share_below_2": 0.066,
+      "share_above_7": 0.4885,
+      "octiles": [
+        2.514912109499916,
+        3.8087618285561864,
+        5.046720495044484,
+        6.763120016785944,
+        10.370581461756604,
+        34.92651218143965,
+        70.27281865076203
+      ]
+    }
+  },
+  "train": {
+    "pairs": 50000,
+    "expected_pairs": 50000,
+    "families": {
+      "chart": 16667,
+      "table": 16667,
+      "card": 16666
+    },
+    "renderings": {
+      "familiar": 50000
+    },
+    "tasks": {
+      "card/field": 11674,
+      "card/total": 4992,
+      "chart/argmax": 4141,
+      "chart/argmin": 2547,
+      "chart/count": 2409,
+      "chart/value": 7570,
+      "table/argmax": 4188,
+      "table/cell": 8405,
+      "table/total": 4074
+    },
+    "fine_edit_share": 0.59694,
+    "qwen_tokens_per_image": {
+      "L": 241.13928,
+      "H": 843.13324
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 24.113928,
+      "H": 84.313324
+    },
+    "llava_full_pool_tokens_millions": 57.6,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.0139,
+    "edit_scale_L_px": {
+      "share_below_2": 0.06324,
+      "share_above_7": 0.50498,
+      "octiles": [
+        2.584556208684143,
+        3.7261639148943995,
+        5.128442836371088,
+        7.103947018875402,
+        11.047355576032109,
+        36.83009727263212,
+        71.81533927621118
+      ]
+    }
+  },
+  "test": {
+    "pairs": 4800,
+    "expected_pairs": 4800,
+    "families": {
+      "chart": 1600,
+      "table": 1600,
+      "card": 1600
+    },
+    "renderings": {
+      "familiar": 2400,
+      "heldout": 2400
+    },
+    "tasks": {
+      "card/field": 1113,
+      "card/total": 487,
+      "chart/argmax": 421,
+      "chart/argmin": 220,
+      "chart/count": 237,
+      "chart/value": 722,
+      "table/argmax": 405,
+      "table/cell": 793,
+      "table/total": 402
+    },
+    "fine_edit_share": 0.6020833333333333,
+    "qwen_tokens_per_image": {
+      "L": 241.11520833333333,
+      "H": 842.41875
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 2.314706,
+      "H": 8.08722
+    },
+    "llava_full_pool_tokens_millions": 5.5296,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.012291666666666666,
+    "edit_scale_L_px": {
+      "share_below_2": 0.06458333333333334,
+      "share_above_7": 0.5089583333333333,
+      "octiles": [
+        2.601020208004732,
+        3.707659686012881,
+        5.078569700464319,
+        7.172484879447632,
+        11.546349830781992,
+        34.33395106465786,
+        70.8122216006867
+      ]
+    }
+  },
+  "prelim_train": {
+    "pairs": 2000,
+    "expected_pairs": 2000,
+    "families": {
+      "chart": 667,
+      "table": 667,
+      "card": 666
+    },
+    "renderings": {
+      "familiar": 2000
+    },
+    "tasks": {
+      "card/field": 472,
+      "card/total": 194,
+      "chart/argmax": 189,
+      "chart/argmin": 76,
+      "chart/count": 97,
+      "chart/value": 305,
+      "table/argmax": 150,
+      "table/cell": 343,
+      "table/total": 174
+    },
+    "fine_edit_share": 0.593,
+    "qwen_tokens_per_image": {
+      "L": 240.934,
+      "H": 846.7525
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 0.963736,
+      "H": 3.38701
+    },
+    "llava_full_pool_tokens_millions": 2.304,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.01,
+    "edit_scale_L_px": {
+      "share_below_2": 0.0625,
+      "share_above_7": 0.4935,
+      "octiles": [
+        2.5825593628753034,
+        3.760449281933706,
+        5.040951177194315,
+        6.870351579304495,
+        10.97451509766716,
+        37.89092727081396,
+        71.55815712271588
+      ]
+    }
+  },
+  "prelim_test": {
+    "pairs": 4800,
+    "expected_pairs": 4800,
+    "families": {
+      "chart": 1600,
+      "table": 1600,
+      "card": 1600
+    },
+    "renderings": {
+      "familiar": 4800
+    },
+    "tasks": {
+      "card/field": 1106,
+      "card/total": 494,
+      "chart/argmax": 413,
+      "chart/argmin": 256,
+      "chart/count": 234,
+      "chart/value": 697,
+      "table/argmax": 413,
+      "table/cell": 789,
+      "table/total": 398
+    },
+    "fine_edit_share": 0.6047916666666666,
+    "qwen_tokens_per_image": {
+      "L": 241.29895833333333,
+      "H": 839.2660416666666
+    },
+    "qwen_full_pool_tokens_millions": {
+      "L": 2.31647,
+      "H": 8.056954
+    },
+    "llava_full_pool_tokens_millions": 5.5296,
+    "smolvlm_tokens_per_image": {
+      "L": 64.0,
+      "H": 320.0
+    },
+    "equal_cost_share_qwen": 0.013125,
+    "edit_scale_L_px": {
+      "share_below_2": 0.06541666666666666,
+      "share_above_7": 0.5072916666666667,
+      "octiles": [
+        2.533896379653286,
+        3.6899030631419865,
+        5.046068758682879,
+        7.156492399216007,
+        11.259295160566849,
+        41.160808235272825,
+        74.09966680404362
+      ]
+    }
+  }
+}
