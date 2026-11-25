@@ -245,7 +245,17 @@ unadapted model.
 ```bash
 python scripts/reader_study.py --config configs/laptop/qwen2.5-vl-3b_reader.yaml \
     --output results/reader_study/qwen2.5-vl-3b --student
+python scripts/plot_reader_study.py results/reader_study/qwen2.5-vl-3b --panels contrast
 ```
+
+<p align="center">
+  <img src="assets/results/contrast_qwen2.5-vl-3b.png" width="82%" alt="Paired-token contrast of 300 held-out pairs on Qwen2.5-VL-3B at low and high resolution, and the median contrast ratio by edit scale">
+</p>
+
+On 300 held-out pairs of the tuning pool, the high-resolution mode of Qwen2.5-VL-3B keeps a
+median of 3.27 times the paired-token contrast of the low-resolution mode when the edit is
+smaller than two pixels at `L`, and 0.86 times when it is larger than seven pixels (Table S1
+of the paper: 2.70 and 1.07).
 
 **Complete pipeline with a 256M backbone.** SmolVLM-256M makes student training affordable
 without a data-centre GPU: the preliminary study, RAT with its threshold trials, the uniform

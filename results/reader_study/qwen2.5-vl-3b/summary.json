@@ -1,0 +1,158 @@
+{
+  "backbone": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "modes": [
+    "L",
+    "H"
+  ],
+  "reader_fit_pairs": 800,
+  "heldout_pool": "tune",
+  "heldout_pairs": 300,
+  "seed": 17,
+  "reader_fit_tokens_per_image": {
+    "L": 240.8625,
+    "H": 840.4825
+  },
+  "reader_fit_encode_seconds_per_image": {
+    "L": 0.34739693439842084,
+    "H": 1.279127838465356
+  },
+  "tune_tokens_per_image": {
+    "L": 241.62333333333333,
+    "H": 840.0266666666666
+  },
+  "tune_encode_seconds_per_image": {
+    "L": 0.38414632707989466,
+    "H": 1.4076804981922033
+  },
+  "contrast": {
+    "small": {
+      "pairs": 27,
+      "median_ratio_H_over_L": 3.269322539407371
+    },
+    "large": {
+      "pairs": 138,
+      "median_ratio_H_over_L": 0.8640899061836389
+    },
+    "middle": {
+      "pairs": 135,
+      "median_ratio_H_over_L": 0.9621079023886883
+    },
+    "all": {
+      "pairs": 300,
+      "median_ratio_H_over_L": 0.9011666738411843
+    },
+    "lower_third": {
+      "pairs": 100,
+      "median_ratio_H_over_L": 1.3537549756504585
+    },
+    "upper_third": {
+      "pairs": 100,
+      "median_ratio_H_over_L": 0.8640899061836389
+    }
+  },
+  "edit_scale_quantiles": {
+    "0.05": 1.6538880923322385,
+    "0.25": 3.4412285860495206,
+    "0.5": 6.324237775014982,
+    "0.75": 37.46985824100652,
+    "0.95": 101.1492581794417
+  },
+  "reader": {
+    "config": {
+      "epochs": 10,
+      "batch_pairs": 16,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "max_grad_norm": 1.0,
+      "init_gain": 0.01,
+      "micro_pairs": 16,
+      "standardize": false
+    },
+    "fit_seconds": 660.3588587499689,
+    "steps": 500,
+    "first_loss": 0.6931405961513519,
+    "final_loss": 1.0552341997623444,
+    "fit": {
+      "L": {
+        "branch_accuracy": 0.5743749737739563,
+        "pair_accuracy": 0.17249999940395355,
+        "median_min_margin": -0.07217550277709961
+      },
+      "H": {
+        "branch_accuracy": 0.5649999976158142,
+        "pair_accuracy": 0.14875000715255737,
+        "median_min_margin": -0.07835817337036133
+      }
+    },
+    "heldout": {
+      "L": {
+        "branch_accuracy": 0.5049999952316284,
+        "pair_accuracy": 0.07000000029802322,
+        "median_min_margin": -0.10317826271057129
+      },
+      "H": {
+        "branch_accuracy": 0.503333330154419,
+        "pair_accuracy": 0.0533333346247673,
+        "median_min_margin": -0.11005306243896484
+      }
+    }
+  },
+  "routing": [
+    {
+      "threshold": 0.6931471805599453,
+      "exp_threshold": 2.0,
+      "retained_percent": 0.6666666666666666,
+      "top_mode_percent": 100.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 1.4492753623188406,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 1.3862943611198906,
+      "exp_threshold": 4.0,
+      "retained_percent": 0.3333333333333333,
+      "top_mode_percent": 100.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.7246376811594203,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 2.1972245773362196,
+      "exp_threshold": 9.000000000000002,
+      "retained_percent": 0.0,
+      "top_mode_percent": 0.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.0,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    }
+  ],
+  "unadapted": {
+    "pairs": 300,
+    "pair": 82.33333333333334,
+    "single": 87.0,
+    "collapse": 4.0,
+    "familiar": 82.33333333333334,
+    "card": 87.0,
+    "chart": 78.0,
+    "table": 82.0,
+    "groups": {
+      "card/familiar": 87.0,
+      "chart/familiar": 78.0,
+      "table/familiar": 82.0
+    },
+    "worst": 78.0,
+    "seconds": 922.596115250024
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "backbone": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "modes": [
+    "L",
+    "H"
+  ],
+  "reader_fit_pairs": 800,
+  "heldout_pool": "tune",
+  "heldout_pairs": 300,
+  "seed": 17,
+  "reader_fit_tokens_per_image": {
+    "L": 240.8625,
+    "H": 840.4825
+  },
+  "reader_fit_encode_seconds_per_image": {
+    "L": 0.34739693439842084,
+    "H": 1.279127838465356
+  },
+  "tune_tokens_per_image": {
+    "L": 241.62333333333333,
+    "H": 840.0266666666666
+  },
+  "tune_encode_seconds_per_image": {
+    "L": 0.38414632707989466,
+    "H": 1.4076804981922033
+  },
+  "contrast": {
+    "small": {
+      "pairs": 27,
+      "median_ratio_H_over_L": 3.269322539407371
+    },
+    "large": {
+      "pairs": 138,
+      "median_ratio_H_over_L": 0.8640899061836389
+    },
+    "middle": {
+      "pairs": 135,
+      "median_ratio_H_over_L": 0.9621079023886883
+    },
+    "all": {
+      "pairs": 300,
+      "median_ratio_H_over_L": 0.9011666738411843
+    },
+    "lower_third": {
+      "pairs": 100,
+      "median_ratio_H_over_L": 1.3537549756504585
+    },
+    "upper_third": {
+      "pairs": 100,
+      "median_ratio_H_over_L": 0.8640899061836389
+    }
+  },
+  "edit_scale_quantiles": {
+    "0.05": 1.6538880923322385,
+    "0.25": 3.4412285860495206,
+    "0.5": 6.324237775014982,
+    "0.75": 37.46985824100652,
+    "0.95": 101.1492581794417
+  },
+  "reader": {
+    "config": {
+      "epochs": 10,
+      "batch_pairs": 16,
+      "learning_rate": 0.0003,
+      "weight_decay": 0.0001,
+      "max_grad_norm": 1.0,
+      "init_gain": 0.01,
+      "micro_pairs": 16,
+      "standardize": true
+    },
+    "fit_seconds": 884.1570370830595,
+    "steps": 500,
+    "first_loss": 0.6931585967540741,
+    "final_loss": 1.22935990691185,
+    "fit": {
+      "L": {
+        "branch_accuracy": 0.5581250190734863,
+        "pair_accuracy": 0.1237500011920929,
+        "median_min_margin": -0.45088380575180054
+      },
+      "H": {
+        "branch_accuracy": 0.5506250262260437,
+        "pair_accuracy": 0.10750000178813934,
+        "median_min_margin": -0.5522140264511108
+      }
+    },
+    "heldout": {
+      "L": {
+        "branch_accuracy": 0.5099999904632568,
+        "pair_accuracy": 0.029999999329447746,
+        "median_min_margin": -0.7191376686096191
+      },
+      "H": {
+        "branch_accuracy": 0.5166666507720947,
+        "pair_accuracy": 0.03999999910593033,
+        "median_min_margin": -0.7573611736297607
+      }
+    }
+  },
+  "routing": [
+    {
+      "threshold": 0.6931471805599453,
+      "exp_threshold": 2.0,
+      "retained_percent": 2.0,
+      "top_mode_percent": 50.0,
+      "token_saving_percent": 40.85610200364299,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 4.3478260869565215,
+      "large_low_mode_percent": 2.1739130434782608,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 1.3862943611198906,
+      "exp_threshold": 4.0,
+      "retained_percent": 0.3333333333333333,
+      "top_mode_percent": 100.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.7246376811594203,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    },
+    {
+      "threshold": 2.1972245773362196,
+      "exp_threshold": 9.000000000000002,
+      "retained_percent": 0.3333333333333333,
+      "top_mode_percent": 100.0,
+      "token_saving_percent": 0.0,
+      "small_retained_percent": 0.0,
+      "small_low_mode_percent": 0.0,
+      "large_retained_percent": 0.7246376811594203,
+      "large_low_mode_percent": 0.0,
+      "middle_retained_percent": 0.0,
+      "middle_low_mode_percent": 0.0
+    }
+  ]
+}

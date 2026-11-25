@@ -221,9 +221,10 @@ Each item states what the paper leaves open and what this repository does.
   two.
 * **Feature standardisation for the reader** (`reader.standardize`).  Adam moves every
   weight by about the learning rate per step, so the change of a score per step grows with
-  the norms of the features.  On features with large norms the fitting loss of Eq. (2) rose
-  instead of falling at the paper's learning rate; standardising the features removes this
-  dependence (Section 5).
+  the norms and the dimensions of the features.  The switch standardises every feature
+  dimension with statistics of the fitting pool.  On SmolVLM-256M the fitting loss of
+  Eq. (2) rose at the paper's learning rate and fell with the switch; on Qwen2.5-VL-3B it
+  rose with and without it (Section 5).
 * **Paired uncertainty.**  `rat/evaluation/stats.py` gives a paired bootstrap interval and
   an exact McNemar test for the difference between two methods on the shared test pairs.
 * **Frozen-side study.**  `scripts/reader_study.py` measures contrast, reader margins and
@@ -288,6 +289,64 @@ Python 3.10 and 3.11.
 and TextVQA with the identifiers in the script.  Unadapted Qwen2.5-VL-3B answers the first
 100 test questions of ChartQA (all human-written) with 67.0% relaxed accuracy at H
 (`results/benchmarks/`).
+
+**Frozen-side study on Qwen2.5-VL-3B** (`results/reader_study/qwen2.5-vl-3b*`;
+`configs/laptop/qwen2.5-vl-3b_reader.yaml`, float16; 800 fitting pairs of `reader_fit`, the
+first 300 pairs of `tune` as held-out pool, seed 17).  A held-out image takes 241.6 visual
+tokens at `L` (228-256) and 840.0 at `H` (240-1,024); encoding takes 0.38 s and 1.41 s per
+image.
+
+*Contrast (Eq. (S1)).*  Median `D_H / D_L` of the held-out pairs by projected edit scale `s`
+in pixels at `L` (`assets/results/contrast_qwen2.5-vl-3b.png`):
+
+| | s < 2 | 2 ≤ s ≤ 7 | s > 7 | All |
+|---|---:|---:|---:|---:|
+| Pairs | 27 | 135 | 138 | 300 |
+| Median `D_H / D_L` | 3.27 | 0.96 | 0.86 | 0.90 |
+| Pairs with `D_H > D_L` (%) | 85.2 | 48.1 | 26.1 | 41.3 |
+
+Table S1 reports 2.70 for `s < 2` and 1.07 for `s > 7`.  The high-resolution mode keeps
+about three times the contrast of the smallest edits, as in the paper; for larger edits the
+two modes are close, with the ratio here below one.  By family the median ratio is 0.86 for
+charts (median edit scale 61.6 pixels), 1.00 for tables (4.9) and 1.03 for text cards (3.9).
+
+*Reader (Eq. (1), (2)).*  Ten epochs at the paper's learning rate of 3e-4 with 16 pairs per
+update (500 updates); the reader has about 8.4 million weights on this backbone.
+
+| Reader settings | Loss | Fit branch acc. L / H | Held-out branch acc. L / H | Held-out pair acc. L / H | Retained at log 2 / log 4 / log 9 |
+|---|---:|---:|---:|---:|---:|
+| Paper (native feature scales) | 0.693 → 1.055 | 0.574 / 0.565 | 0.505 / 0.503 | 0.070 / 0.053 | 0.7 / 0.3 / 0% |
+| With `reader.standardize` | 0.693 → 1.229 | 0.558 / 0.551 | 0.510 / 0.517 | 0.030 / 0.040 | 2.0 / 0.3 / 0.3% |
+
+With 800 fitting pairs the loss of Eq. (2) rises above its initial value in both settings,
+the held-out branch accuracy stays at chance and the gate retains between zero and six of
+the 300 pairs, so the routing statistics of Fig. 5 cannot be read from these runs.  The
+paper fits the reader on 10,000 pairs with 128 pairs per update.
+
+*Unadapted model at `H`* (`--student`; exact match, greedy decoding from the cached
+features).  Paired accuracy 82.33%, single-image accuracy 87.00%, collapse 4.00% on the 300
+held-out pairs, all with familiar renderings:
+
+| Group | Pairs | Pair (%) | Single (%) | Collapse (%) |
+|---|---:|---:|---:|---:|
+| Charts | 100 | 78.00 | 84.50 | 1.00 |
+| Tables | 100 | 82.00 | 86.00 | 10.00 |
+| Text cards | 100 | 87.00 | 90.50 | 1.00 |
+| Edit scale s < 2 | 27 | 62.96 | 68.52 | 7.41 |
+| 2 ≤ s ≤ 7 | 135 | 86.67 | 90.00 | 6.67 |
+| s > 7 | 138 | 81.88 | 87.68 | 0.72 |
+| Font size on the canvas ≤ 9 px | 64 | 64.06 | | |
+| 10-14 px | 101 | 83.17 | | |
+| ≥ 15 px | 135 | 90.37 | | |
+
+Twelve of the 53 failed pairs fail by the form of the answer only (a number word for a
+digit, a full month name for its abbreviation, a dropped trailing zero); all twelve have an
+edit scale above 7 pixels, and accepting them gives 86.33%.  Table S3 reports 57.42% paired
+accuracy on familiar renderings, 70.81% single-image accuracy and 13.65% collapse for the
+unadapted Qwen2.5-VL-3B on the paper's test pool: the pairs of this repository's generator
+are easier for the unadapted model than the paper's, in line with their edit scales (6.5% of
+the pairs of `prelim_test` are below 2 pixels here, `data/statistics.json`; 1,945 of 4,800,
+or 40.5%, in Table S1).
 
 **Learning rate of the laptop configuration.**  Stage `lr-pilot` trained 300 uniformly
 selected pairs of the student pool at H for one pass (eight pairs per update) and scored
