@@ -323,6 +323,21 @@ the held-out branch accuracy stays at chance and the gate retains between zero a
 the 300 pairs, so the routing statistics of Fig. 5 cannot be read from these runs.  The
 paper fits the reader on 10,000 pairs with 128 pairs per update.
 
+One-epoch fits on the same pools (50 updates; `reader.epochs=1` with the learning rate
+overridden, `learning_rate_probe.json`):
+
+| Learning rate | Standardised | Mean loss, first / last five updates | Largest loss of an update | Held-out branch acc. L / H |
+|---|---|---:|---:|---:|
+| 3e-4 | no | 0.806 / 0.794 | 2.116 | 0.492 / 0.497 |
+| 3e-5 | no | 0.694 / 0.694 | 0.699 | 0.497 / 0.507 |
+| 3e-6 | no | 0.693 / 0.693 | 0.694 | 0.515 / 0.508 |
+| 3e-5 | yes | 0.694 / 0.695 | 0.752 | 0.515 / 0.525 |
+| 3e-6 | yes | 0.693 / 0.693 | 0.694 | 0.515 / 0.513 |
+
+At 3e-4 single updates raise the loss to as much as 2.1.  A learning rate ten or a hundred
+times smaller keeps the loss close to its initial value, and one pass over 800 pairs does
+not lower it.
+
 *Unadapted model at `H`* (`--student`; exact match, greedy decoding from the cached
 features).  Paired accuracy 82.33%, single-image accuracy 87.00%, collapse 4.00% on the 300
 held-out pairs, all with familiar renderings:
